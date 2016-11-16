@@ -219,3 +219,30 @@
 - `assets/babel/components/Home.js`
 - `assets/babel/components/About.js`
 - `assets/babel/components/Error404.js`
+
+11 - [optional development only] Adding auto reload
+
+> Adjusting `tasks/config/watch.js`
+
+```javascript
+    module.exports = function (grunt) {
+
+        grunt.config.set('watch', {
+            assets: {
+                files: ['src/**/*', 'assets/**/*', 'tasks/pipeline.js', '!**/node_modules/**'],
+                tasks: ['syncAssets', 'linkAssets'],
+
+                options: {
+                    livereload: true, // <== ADD HERE
+                },
+            }
+        });
+
+        grunt.loadNpmTasks('grunt-contrib-watch');
+    };
+```
+> Add reload script to bottom of `views/layout.ejs`
+
+```html
+    <script src="http://localhost:35729/livereload.js"></script>
+```
