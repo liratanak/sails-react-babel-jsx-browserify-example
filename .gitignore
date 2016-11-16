@@ -116,3 +116,8 @@ npm-debug.log
 nbproject
 .idea
 .node_history
+
+# generated files
+
+assets/js/bundle.js
+assets/js/index.js*

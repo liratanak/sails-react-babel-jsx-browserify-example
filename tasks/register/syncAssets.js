@@ -14,6 +14,8 @@ module.exports = function(grunt) {
   grunt.registerTask('syncAssets', [
     'jst:dev',
     'less:dev',
+    'babel', // <== ADD HERE 
+    'browserify:client', // <== AND HERE
     'sync:dev',
     'coffee:dev'
   ]);
