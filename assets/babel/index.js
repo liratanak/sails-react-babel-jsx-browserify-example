@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link } from 'react-router'
 
-class HelloMessage extends React.Component {
-    render() {
-        return <div>Hello {this.props.name}</div>;
-    }
-}
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
+import Main from './components/Main';
+import Home from './components/Home';
+import About from './components/About';
+
+import Error404 from './components/Error404';
 
 ReactDOM.render(
-    <HelloMessage name="Jane" />, 
-    document.getElementById('root')
+	<Router history={browserHistory}>
+		<Route path="/" component={Main}>
+			<IndexRoute component={Home} />
+
+			<Route path="/app">
+				<Route path="about" component={About} />
+			</Route>
+
+			<Route path="*" component={Error404} />
+		</Route>
+	</Router>, 
+	document.getElementById('root')
 );

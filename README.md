@@ -166,3 +166,56 @@
         document.getElementById('root')
     );
 ```
+
+10 - [optional] Adding React Router
+
+> Adjust Sails's route `config/routes.js`
+
+```javascript
+    module.exports.routes = {
+        '/': {
+            view: 'homepage'
+        },
+
+        // ADD below route for React Router
+        '/app/*': {
+            view: 'homepage'
+        }
+    };
+```
+
+> Adjust `assets/babel/index.js`
+
+```javascript
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
+    import Main from './components/Main';
+    import Home from './components/Home';
+    import About from './components/About';
+
+    import Error404 from './components/Error404';
+
+    ReactDOM.render(
+        <Router history={browserHistory}>
+            <Route path="/" component={Main}>
+                <IndexRoute component={Home} />
+
+                <Route path="/app">
+                    <Route path="about" component={About} />
+                </Route>
+
+                <Route path="*" component={Error404} />
+            </Route>
+        </Router>, 
+        document.getElementById('root')
+    );
+```
+
+> Adding new related components like:
+
+- `assets/babel/components/Main.js`
+- `assets/babel/components/Home.js`
+- `assets/babel/components/About.js`
+- `assets/babel/components/Error404.js`

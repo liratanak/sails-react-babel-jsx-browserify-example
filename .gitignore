@@ -119,5 +119,5 @@ nbproject
 
 # generated files
 
-assets/js/bundle.js
-assets/js/index.js*
+assets/js
+!assets/js/dependencies/sails.io.js
